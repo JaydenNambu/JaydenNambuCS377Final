@@ -11,6 +11,7 @@ struct Process {
   int duration;
   int completion;
   int burst_time;
+  int off_time;
 };
 
 class ArrivalComparator {
@@ -47,6 +48,7 @@ list<Process> sjf(pqueue_arrival workload);
 list<Process> stcf(pqueue_arrival workload);
 list<Process> rr(pqueue_arrival workload);
 list<Process> MLFQ(pqueue_arrival workload);
+list<Process> MLFQInteractive(pqueue_arrival workload);
 
 float avg_turnaround(list<Process> processes);
 float avg_response(list<Process> processes);

@@ -73,8 +73,10 @@ TEST(SchedulingTest, SchedulingTest5) {
   }
 
 int main(int argc, char **argv) {
-    pqueue_arrival pq = read_workload("workloads/workload_05.txt");
+  pqueue_arrival pq = read_workload("workloads/workload_05.txt");
   // show_workload(pq);
+  cout << "workload_05.txt" << "\n";
+  cout << "rr" << "\n";
   list<Process> l = rr(pq);
   for(auto const &v : l){
     cout << "_____" << "\n";
@@ -84,6 +86,7 @@ int main(int argc, char **argv) {
     cout << v.completion << "\n";
     cout << "_____" << "\n";
   }
+  cout << "MLFQ" << "\n";
   list<Process> e = MLFQ(pq);
   for(auto const &v : e){
     cout << "_____" << "\n";
@@ -93,34 +96,27 @@ int main(int argc, char **argv) {
     cout << v.completion << "\n";
     cout << "_____" << "\n";
   }
-  // list<int> l;
-  // l.push_back(1);
-  // l.push_back(7);
-  // l.push_back(32);
-  // l.remove(1);
-  // l.remove(7);
-  // l.remove(32);
-  // if(l.empty()){
-  //   cout <<"EE";
-  // }
-  // cout << l.empty();
-  // for(auto i = l.begin(); i != l.end(); i++){
-  //   *i = 2;
-  // }
-  
-  // for(auto i = l.begin(); i != l.end(); i++){
-  //   cout << *i;
-  // }
-  // auto fron = l.begin();
-  // auto froe = l.end();
-  // advance(fron, 1);
-  // advance(fron, 1);
-  // advance(fron, 1);
-  // advance(fron, 1);
-  // advance(fron, 1);
-
-  // cout << *fron <<'\n';
-  // cout << *froe;
-
-  // testing::InitGomake
+  pqueue_arrival pq1 = read_workload("workloads/workload_mlfq.txt");
+  // show_workload(pq);
+  cout << "workload_mlfq.txt" << "\n";
+  cout << "rr" << "\n";
+  list<Process> l1 = rr(pq1);
+  for(auto const &v : l1){
+    cout << "_____" << "\n";
+    cout << v.arrival << "\n";
+    cout << v.first_run << "\n";
+    cout << v.duration << "\n";
+    cout << v.completion << "\n";
+    cout << "_____" << "\n";
+  }
+  cout << "MLFQ" << "\n";
+  list<Process> e1 = MLFQ(pq1);
+  for(auto const &v : e1){
+    cout << "_____" << "\n";
+    cout << v.arrival << "\n";
+    cout << v.first_run << "\n";
+    cout << v.duration << "\n";
+    cout << v.completion << "\n";
+    cout << "_____" << "\n";
+  }
 }
